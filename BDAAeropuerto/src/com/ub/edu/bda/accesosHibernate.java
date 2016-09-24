@@ -10,10 +10,11 @@ import org.hibernate.Transaction;
 import org.hibernate.type.StringType;
 
 import Objetos.aeropuerto;
+import Objetos.piloto;
 
 public class accesosHibernate {
 
-	public void insert(aeropuerto a){
+	public void insertAeropuerto(aeropuerto a){
 	
 		 Session session = null;
 	     Transaction tx = null;
@@ -36,7 +37,7 @@ public class accesosHibernate {
 	        }
 	}
 	
-	public void update(aeropuerto a){
+	public void updateAeropuerto(aeropuerto a){
 		
 		 Session session = null;
 	     Transaction tx = null;
@@ -59,9 +60,54 @@ public class accesosHibernate {
 	        }
 	}
 	
-	public SQLQuery select(String select){
+	public void insertPiloto(piloto p){
+		
 		 Session session = null;
 	     Transaction tx = null;
+		
+	     try {
+	            session = ConnectorHB.getSession();
+	            tx = session.beginTransaction();
+	            session.save(p);
+	            //El objecto art esta enlazado
+	            
+	            tx.commit();
+	            
+	            System.out.println("Insert realizado correctamente...");
+	            
+	        } catch (HibernateException e) {
+	            if(tx!=null && tx.isActive()) tx.rollback();
+	            e.printStackTrace();
+	        } finally {
+	            if(session!=null) session.close();
+	        }
+	}
+	
+	public void updatePiloto(piloto p){
+		
+		 Session session = null;
+	     Transaction tx = null;
+		
+	     try {
+	            session = ConnectorHB.getSession();
+	            tx = session.beginTransaction();
+	            session.update(p);
+	            //El objecto art esta enlazado
+	            
+	            tx.commit();
+	            
+	            System.out.println("Update realizado correctamente...");
+	            
+	        } catch (HibernateException e) {
+	            if(tx!=null && tx.isActive()) tx.rollback();
+	            e.printStackTrace();
+	        } finally {
+	            if(session!=null) session.close();
+	        }
+	}
+	
+	public SQLQuery select(String select){
+		 Session session = null;
 		 
 	     try {
 	            session = ConnectorHB.getSession();
@@ -75,7 +121,6 @@ public class accesosHibernate {
 	            //return result;
 	            
 	        } catch (HibernateException e) {
-	            if(tx!=null && tx.isActive()) tx.rollback();
 	            e.printStackTrace();
 	            return null;
 	        }

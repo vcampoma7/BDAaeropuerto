@@ -53,20 +53,32 @@ public class MenuPrincipal extends JFrame {
 				verAeropuertos.setVisible(true);
 			}
 		});
+		
+		JButton btnVerPiloto = new JButton("Ver piloto");
+		btnVerPiloto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VerPilotos verPilotos = new VerPilotos();
+				verPilotos.setVisible(true);
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(btnVerAeropuerto)
-					.addContainerGap(325, Short.MAX_VALUE))
+					.addGap(26)
+					.addComponent(btnVerPiloto, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(178, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnVerAeropuerto)
-					.addContainerGap(218, Short.MAX_VALUE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnVerAeropuerto)
+						.addComponent(btnVerPiloto))
+					.addContainerGap(217, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}

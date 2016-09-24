@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Objetos.piloto" table="PILOTO">
+        <id name="idPiloto" column="ID">
+            <generator class="identity" />
+        </id>
+        <property name="nombre" column="NOMBRE" />
+        <property name="apellido" column="APELLIDO" />
+        <property name="horasDeVuelo" column="HORASDEVUELO" />
+        
+        <many-to-one name="aeropuerto" class="Objetos.aeropuerto" fetch="select">
+           <column name="ID_AEROPUERTO" /> <!-- CAMP FK de la taula articulo IDENTICS A LES DUES ENTITATS --> 
+        </many-to-one> 
+              
+    </class>
+</hibernate-mapping>
