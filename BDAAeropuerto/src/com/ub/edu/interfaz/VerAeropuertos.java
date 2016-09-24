@@ -16,7 +16,7 @@ import org.hibernate.annotations.Parent;
 
 import com.ub.edu.bda.accesosHibernate;
 
-import Objetos.aeropuerto;
+import Objetos.Aeropuerto;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -70,7 +70,7 @@ public class VerAeropuertos extends JFrame {
 			         result.add(tbl_aeropuertos.getModel().getValueAt(tbl_aeropuertos.getSelectedRow(), i).toString());
 			     }
 			     
-			     aeropuerto a = new aeropuerto(Integer.valueOf(result.get(0)), result.get(1).toString(), result.get(2).toString(), result.get(3).toString(), Float.valueOf(result.get(4)));
+			     Aeropuerto a = new Aeropuerto(Integer.valueOf(result.get(0)), result.get(1).toString(), result.get(2).toString(), result.get(3).toString(), Float.valueOf(result.get(4)));
 			     
 				addAeropuertos addAeropuerto = new addAeropuertos(thisframe, true, true, a);
 				addAeropuerto.setVisible(true);
@@ -116,12 +116,11 @@ public class VerAeropuertos extends JFrame {
 		accesosHibernate h = new accesosHibernate();
 		
 		@SuppressWarnings("unchecked")
-		List <aeropuerto> aeropuertos = h.select("SELECT * FROM aeropuerto").addEntity(aeropuerto.class).list();
+		List <Aeropuerto> aeropuertos = h.select("SELECT * FROM aeropuerto").addEntity(Aeropuerto.class).list();
 		
 		rellenarTablaAeropuertos(aeropuertos);
 	}
-	
-	private void rellenarTablaAeropuertos(List <aeropuerto> aeropuertos){
+	private void rellenarTablaAeropuertos(List <Aeropuerto> aeropuertos){
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("id");
@@ -133,7 +132,7 @@ public class VerAeropuertos extends JFrame {
 		tbl_aeropuertos.setModel(model);
 		
 		if(aeropuertos!=null){
-			for(aeropuerto a: aeropuertos)
+			for(Aeropuerto a: aeropuertos)
 				model.addRow(new Object[]{a.getId_aeropuerto(), a.getNombre(), a.getCiudad(), a.getcodigoInternacional(), a.getCosteDelHandling()});
 		}
 	}

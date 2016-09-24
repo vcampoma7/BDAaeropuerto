@@ -11,7 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.type.StringType;
 
-import Objetos.aeropuerto;
+import Objetos.Aeropuerto;
 
 public class TestHB {
 
@@ -23,7 +23,7 @@ public class TestHB {
 		// TODO Auto-generated method stub
 		 Session session = null;
 	        Transaction tx = null;
-	        aeropuerto art = new aeropuerto("Aeropuerto de Madrid", "Madrid", "MAD01", 300);
+	        Aeropuerto art = new Aeropuerto("Aeropuerto de Madrid", "Madrid", "MAD01", 300);
 	        
 	        try {
 	            session = ConnectorHB.getSession();

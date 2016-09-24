@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.ub.edu.bda.accesosHibernate;
 
-import Objetos.aeropuerto;
+import Objetos.Aeropuerto;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -31,12 +31,12 @@ public class addAeropuertos extends JDialog {
 	private JTextField txtCosteHandling;
 	private boolean editar;
 	accesosHibernate acc = new accesosHibernate();
-	aeropuerto a;
+	Aeropuerto a;
 	
 	/**
 	 * Create the dialog.
 	 */
-	public addAeropuertos(JFrame parent, boolean modal, boolean editar, aeropuerto a) {
+	public addAeropuertos(JFrame parent, boolean modal, boolean editar, Aeropuerto a) {
 		super(parent, modal);
 		
 		this.editar = editar;
@@ -144,7 +144,7 @@ public class addAeropuertos extends JDialog {
 						
 						if(editar == false){
 
-							aeropuerto a = new aeropuerto(nombre, ciudad, codigo, costeHandling);
+							Aeropuerto a = new Aeropuerto(nombre, ciudad, codigo, costeHandling);
 	
 							acc.insertAeropuerto(a);
 						}

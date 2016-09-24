@@ -9,12 +9,12 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.type.StringType;
 
-import Objetos.aeropuerto;
-import Objetos.piloto;
+import Objetos.Aeropuerto;
+import Objetos.Piloto;
 
 public class accesosHibernate {
 
-	public void insertAeropuerto(aeropuerto a){
+	public void insertAeropuerto(Aeropuerto a){
 	
 		 Session session = null;
 	     Transaction tx = null;
@@ -37,7 +37,7 @@ public class accesosHibernate {
 	        }
 	}
 	
-	public void updateAeropuerto(aeropuerto a){
+	public void updateAeropuerto(Aeropuerto a){
 		
 		 Session session = null;
 	     Transaction tx = null;
@@ -60,7 +60,7 @@ public class accesosHibernate {
 	        }
 	}
 	
-	public void insertPiloto(piloto p){
+	public void insertPiloto(Piloto p){
 		
 		 Session session = null;
 	     Transaction tx = null;
@@ -83,7 +83,7 @@ public class accesosHibernate {
 	        }
 	}
 	
-	public void updatePiloto(piloto p){
+	public void updatePiloto(Piloto p){
 		
 		 Session session = null;
 	     Transaction tx = null;

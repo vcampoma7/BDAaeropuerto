@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.ub.edu.bda.accesosHibernate;
 
-import Objetos.piloto;
+import Objetos.Piloto;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -31,12 +31,12 @@ public class addPilotos extends JDialog {
 	private JTextField txtId_aeropuerto;
 	private boolean editar;
 	accesosHibernate acc = new accesosHibernate();
-	piloto a;
+	Piloto a;
 	
 	/**
 	 * Create the dialog.
 	 */
-	public addPilotos(JFrame parent, boolean modal, boolean editar, piloto a) {
+	public addPilotos(JFrame parent, boolean modal, boolean editar, Piloto a) {
 		super(parent, modal);
 		
 		this.editar = editar;
@@ -144,7 +144,7 @@ public class addPilotos extends JDialog {
 						
 						if(editar == false){
 
-							piloto a = new piloto(nombre, apellido, horasDeVuelo,id_aeropuerto);
+							Piloto a = new Piloto(nombre, apellido, horasDeVuelo,id_aeropuerto);
 							acc.insertPiloto(a);
 						}
 						else{
@@ -153,7 +153,7 @@ public class addPilotos extends JDialog {
 							a.setNombre(nombre);
 							a.setApellido(apellido);
 							a.setHorasDeVuelo(horasDeVuelo);
-							a.setId_aeropuerto(id_aeropuerto);
+							//a.setAeropuerto(id_aeropuerto);
 							acc.updatePiloto(a);
 						}
 						

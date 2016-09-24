@@ -16,7 +16,7 @@ import org.hibernate.annotations.Parent;
 
 import com.ub.edu.bda.accesosHibernate;
 
-import Objetos.piloto;
+import Objetos.Piloto;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -70,7 +70,7 @@ public class VerPilotos extends JFrame {
 			         result.add(tbl_pilotos.getModel().getValueAt(tbl_pilotos.getSelectedRow(), i).toString());
 			     }
 			     
-			     piloto a = new piloto(Integer.valueOf(result.get(0)), result.get(1).toString(), result.get(2).toString(), Float.valueOf(result.get(3)), Integer.valueOf(result.get(4)));
+			     Piloto a = new Piloto(Integer.valueOf(result.get(0)), result.get(1).toString(), result.get(2).toString(), Float.valueOf(result.get(3)), Integer.valueOf(result.get(4)));
 				addPilotos addPiloto = new addPilotos(thisframe, true, true, a);
 				addPiloto.setVisible(true);
 				
@@ -115,12 +115,12 @@ public class VerPilotos extends JFrame {
 		accesosHibernate h = new accesosHibernate();
 		
 		@SuppressWarnings("unchecked")
-		List <piloto> pilotos = h.select("SELECT * FROM piloto").addEntity(piloto.class).list();
+		List <Piloto> pilotos = h.select("SELECT * FROM pilotos").addEntity(Piloto.class).list();
 		
 		rellenarTablaPilotos(pilotos);
 	}
 	
-	private void rellenarTablaPilotos(List <piloto> pilotos){
+	private void rellenarTablaPilotos(List <Piloto> pilotos){
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("id");
@@ -132,8 +132,8 @@ public class VerPilotos extends JFrame {
 		tbl_pilotos.setModel(model);
 		
 		if(pilotos!=null){
-			for(piloto a: pilotos)
-				model.addRow(new Object[]{a.getIdPiloto(), a.getNombre(), a.getApellido(), a.getHorasDeVuelo(), a.getId_aeropuerto()});
+			for(Piloto a: pilotos)
+				model.addRow(new Object[]{a.getIdPiloto(), a.getNombre(), a.getApellido(), a.getHorasDeVuelo()});
 		}
 	}
 }

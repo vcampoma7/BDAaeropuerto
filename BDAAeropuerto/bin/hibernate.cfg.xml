@@ -16,7 +16,7 @@
  none, update, create 
  <property name="hibernate.hbm2ddl.auto">create</property> 
  Declaramos los archivos de mapping-->
-  <mapping resource="hibernate/aeropuerto.hbm.xml"/>
-  <mapping resource="hibernate/piloto.hbm.xml"/> 
+  <mapping resource="hibernate/Aeropuerto.hbm.xml"/>
+  <mapping resource="hibernate/Piloto.hbm.xml"/> 
  </session-factory>
 </hibernate-configuration>
