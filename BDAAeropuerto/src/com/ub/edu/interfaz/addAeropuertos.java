@@ -12,10 +12,14 @@ import javax.swing.border.EmptyBorder;
 import com.ub.edu.bda.accesosHibernate;
 
 import Objetos.Aeropuerto;
+import Utils.MyUtils;
+import antlr.StringUtils;
+import antlr.Utils;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -137,28 +141,36 @@ public class addAeropuertos extends JDialog {
 				addAeropuerto.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						
-						String nombre = txtNombreAeropuerto.getText();
-						String ciudad = txtNombreCiudad.getText();
-						String codigo = txtCodigoInternacional.getText();
-						float costeHandling = Float.valueOf(txtCosteHandling.getText());
-						
-						if(editar == false){
-
-							Aeropuerto a = new Aeropuerto(nombre, ciudad, codigo, costeHandling);
-	
-							acc.insertAeropuerto(a);
+						if (comprobarCamposRellenados() == true){
+							if(comprobarTipoCampos() == true){
+								String nombre = txtNombreAeropuerto.getText();
+								String ciudad = txtNombreCiudad.getText();
+								String codigo = txtCodigoInternacional.getText();
+								float costeHandling = Float.valueOf(txtCosteHandling.getText());
+								
+								if(editar == false){
+		
+									Aeropuerto a = new Aeropuerto(nombre, ciudad, codigo, costeHandling);
+			
+									acc.insertAeropuerto(a);
+								}
+								else{
+									
+									a.setId_aeropuerto(a.getId_aeropuerto());
+									a.setNombre(nombre);
+									a.setCiudad(ciudad);
+									a.setCodigoInternacional(codigo);
+									a.setCosteDelHandling(costeHandling);
+									acc.updateAeropuerto(a);
+								}
+								
+								dispose();
+							}else{
+								JOptionPane.showMessageDialog(null, "TIPO CAMPO INCORRECTO");
+							}
+						}else{
+							JOptionPane.showMessageDialog(null, "FALTAN CAMPOS POR RELLENAR");
 						}
-						else{
-							
-							a.setId_aeropuerto(a.getId_aeropuerto());
-							a.setNombre(nombre);
-							a.setCiudad(ciudad);
-							a.setCodigoInternacional(codigo);
-							a.setCosteDelHandling(costeHandling);
-							acc.updateAeropuerto(a);
-						}
-						
-						dispose();
 					}
 				});
 				addAeropuerto.setActionCommand("OK");
@@ -183,5 +195,29 @@ public class addAeropuertos extends JDialog {
 			txtCodigoInternacional.setText(a.getcodigoInternacional());
 			txtCosteHandling.setText(a.getCosteDelHandling().toString());
 		}
+	}
+	
+	public boolean comprobarCamposRellenados(){
+		if(txtNombreAeropuerto.getText().length()<=0){
+			return false;
+		}
+		else if(txtNombreCiudad.getText().length()<=0){
+			return false;
+		}
+		else if(txtCodigoInternacional.getText().length()<=0){
+			return false;
+		}
+		else if(txtCosteHandling.getText().length()<=0){
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean comprobarTipoCampos(){
+		MyUtils u = new MyUtils();
+		if(u.stringIsNumeric(txtCosteHandling.getText()) == false){	
+			return false;
+		}
+		return true;
 	}
 }

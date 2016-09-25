@@ -16,6 +16,7 @@ import org.hibernate.annotations.Parent;
 
 import com.ub.edu.bda.accesosHibernate;
 
+import Objetos.Aeropuerto;
 import Objetos.Piloto;
 
 import javax.swing.GroupLayout;
@@ -34,6 +35,7 @@ public class VerPilotos extends JFrame {
 	private JTable tbl_pilotos;
 	private JFrame thisframe;
 	addPilotos addPiloto;
+	accesosHibernate h = new accesosHibernate();
 
 	/**
 	 * Create the frame.
@@ -69,9 +71,12 @@ public class VerPilotos extends JFrame {
 			     for (int i = 0; i < tbl_pilotos.getModel().getColumnCount(); i++) {
 			         result.add(tbl_pilotos.getModel().getValueAt(tbl_pilotos.getSelectedRow(), i).toString());
 			     }
-			     
-			     Piloto a = new Piloto(Integer.valueOf(result.get(0)), result.get(1).toString(), result.get(2).toString(), Float.valueOf(result.get(3)), Integer.valueOf(result.get(4)));
-				addPilotos addPiloto = new addPilotos(thisframe, true, true, a);
+			    
+			    @SuppressWarnings("unchecked")
+				List <Aeropuerto> aeropuerto = h.select("select * FROM aeropuerto where id = " + result.get(4).toString()).addEntity(Aeropuerto.class).list();
+			    
+			    Piloto p = new Piloto(Integer.valueOf(result.get(0)), result.get(1).toString(), result.get(2).toString(), Float.valueOf(result.get(3)), aeropuerto.get(0));
+				addPilotos addPiloto = new addPilotos(thisframe, true, true, p);
 				addPiloto.setVisible(true);
 				
 				buscarPilotos();
@@ -112,7 +117,6 @@ public class VerPilotos extends JFrame {
 	}
 	
 	private void buscarPilotos(){
-		accesosHibernate h = new accesosHibernate();
 		
 		@SuppressWarnings("unchecked")
 		List <Piloto> pilotos = h.select("SELECT * FROM pilotos").addEntity(Piloto.class).list();
@@ -127,13 +131,14 @@ public class VerPilotos extends JFrame {
 		model.addColumn("Nombre"); 
 		model.addColumn("Apellido");
 		model.addColumn("Horas de vuelo");
-		model.addColumn("ID Aeropuerto"); 
+		model.addColumn("Id Aeropuerto");
+		model.addColumn("Codigo Aeropuerto"); 
 		
 		tbl_pilotos.setModel(model);
 		
 		if(pilotos!=null){
 			for(Piloto a: pilotos)
-				model.addRow(new Object[]{a.getIdPiloto(), a.getNombre(), a.getApellido(), a.getHorasDeVuelo()});
+				model.addRow(new Object[]{a.getIdPiloto(), a.getNombre(), a.getApellidos(), a.getHorasDeVuelo(), a.getAeropuerto().getId_aeropuerto(), a.getAeropuerto().getcodigoInternacional()});
 		}
 	}
 }

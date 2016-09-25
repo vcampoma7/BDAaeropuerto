@@ -3,7 +3,7 @@ package Objetos;
 public class Piloto {
 private Integer idPiloto;
 private String nombre;
-private String apellido;
+private String apellidos;
 private float horasDeVuelo;
 //private int id_aeropuerto;
 
@@ -16,20 +16,22 @@ public Piloto() {
 }
 
 public Piloto(String nombre,
-		String apellido, float horasDeVuelo, int id_aeropuerto) {
+		String apellidos, float horasDeVuelo, Aeropuerto aeropuerto) {
 	super();
 	this.nombre = nombre;
-	this.apellido = apellido;
+	this.apellidos = apellidos;
 	this.horasDeVuelo = horasDeVuelo;
+	this.aeropuerto = aeropuerto;
 }
 
 public Piloto(Integer idPiloto, String nombre,
-		String apellido, float horasDeVuelo, int id_aeropuerto) {
+		String apellidos, float horasDeVuelo, Aeropuerto aeropuerto) {
 	super();
 	this.idPiloto = idPiloto;
 	this.nombre = nombre;
-	this.apellido = apellido;
+	this.apellidos = apellidos;
 	this.horasDeVuelo = horasDeVuelo;
+	this.aeropuerto = aeropuerto;
 }
 
 public Integer getIdPiloto() {
@@ -48,15 +50,15 @@ public void setNombre(String nombre) {
 	this.nombre = nombre;
 }
 
-public String getApellido() {
-	return this.apellido;
+public String getApellidos() {
+	return this.apellidos;
 }
 
-public void setApellido(String apellido) {
-	this.apellido = apellido;
+public void setApellidos(String apellidos) {
+	this.apellidos = apellidos;
 }
 
-public float getHorasDeVuelo() {
+public Float getHorasDeVuelo() {
 	return this.horasDeVuelo;
 }
 

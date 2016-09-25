@@ -3,15 +3,15 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="Objetos.piloto" table="PILOTO">
+    <class name="Objetos.Piloto" table="PILOTOS">
         <id name="idPiloto" column="ID">
             <generator class="identity" />
         </id>
         <property name="nombre" column="NOMBRE" />
-        <property name="apellido" column="APELLIDO" />
-        <property name="horasDeVuelo" column="HORASDEVUELO" />
+        <property name="apellidos" column="apellidos" />
+        <property name="horasDeVuelo" column="horas_vuelo" />
         
-        <many-to-one name="aeropuerto" class="Objetos.aeropuerto" fetch="select">
+        <many-to-one name="aeropuerto" class="Objetos.Aeropuerto" fetch="select">
            <column name="ID_AEROPUERTO" /> <!-- CAMP FK de la taula articulo IDENTICS A LES DUES ENTITATS --> 
         </many-to-one> 
               

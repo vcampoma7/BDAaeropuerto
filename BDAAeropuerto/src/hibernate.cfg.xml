@@ -9,6 +9,7 @@
   <property name="hibernate.connection.username">postgres</property>
   <property name="hibernate.connection.password">postgres</property>
   <property name="hibernate.default_schema">public</property>
+  
   <!-- Definimos propiedades de Hibernate para SQL -->
   <property name="show_sql">false</property>
   <property name="format_sql">true</property>
