@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Objetos.Ruta" table="RUTA">
+        <id name="id" column="ID">
+            <generator class="identity" />
+        </id>
+        <property name="diasemana" column="diasemana" />
+        <property name="hora_asignada" column="hora_asignada" />
+        
+        <many-to-one name="aeropuerto_origen" class="Objetos.Aeropuerto" fetch="select">
+           <column name="ID_AEROPUERTO_ORIGEN" /> <!-- CAMP FK de la taula articulo IDENTICS A LES DUES ENTITATS --> 
+        </many-to-one> 
+        
+        <many-to-one name="aeropuerto_destino" class="Objetos.Aeropuerto" fetch="select">
+           <column name="ID_AEROPUERTO_DESTINO" /> <!-- CAMP FK de la taula articulo IDENTICS A LES DUES ENTITATS --> 
+        </many-to-one>
+        
+        <many-to-one name="piloto" class="Objetos.Piloto" fetch="select">
+           <column name="ID_PILOTO" /> <!-- CAMP FK de la taula articulo IDENTICS A LES DUES ENTITATS --> 
+        </many-to-one>
+        
+        <many-to-one name="avion" class="Objetos.Avion" fetch="select">
+           <column name="ID_AVION" /> <!-- CAMP FK de la taula articulo IDENTICS A LES DUES ENTITATS --> 
+        </many-to-one>
+        
+    </class>
+</hibernate-mapping>
