@@ -11,7 +11,9 @@ import org.hibernate.type.StringType;
 
 import Objetos.Aeropuerto;
 import Objetos.Piloto;
+import Objetos.Ruta;
 import Objetos.ModeloAvion;
+import Objetos.Avion;
 
 public class accesosHibernate {
 
@@ -84,6 +86,31 @@ public class accesosHibernate {
 	        }
 	}
 	
+	
+	
+	public void updatePiloto(Piloto p){
+		
+		 Session session = null;
+	     Transaction tx = null;
+		
+	     try {
+	            session = ConnectorHB.getSession();
+	            tx = session.beginTransaction();
+	            session.update(p);
+	            //El objecto art esta enlazado
+	            
+	            tx.commit();
+	            
+	            System.out.println("Update realizado correctamente...");
+	            
+	        } catch (HibernateException e) {
+	            if(tx!=null && tx.isActive()) tx.rollback();
+	            e.printStackTrace();
+	        } finally {
+	            if(session!=null) session.close();
+	        }
+	}
+	
 	public void insertModeloAvion(ModeloAvion a){
 		
 		 Session session = null;
@@ -130,7 +157,76 @@ public class accesosHibernate {
 	        }
 	}
 	
-	public void updatePiloto(Piloto p){
+	public void insertAvion(Avion a){
+		
+		 Session session = null;
+	     Transaction tx = null;
+		
+	     try {
+	            session = ConnectorHB.getSession();
+	            tx = session.beginTransaction();
+	            session.save(a);
+	            //El objecto art esta enlazado
+	            
+	            tx.commit();
+	            
+	            System.out.println("Insert realizado correctamente...");
+	            
+	        } catch (HibernateException e) {
+	            if(tx!=null && tx.isActive()) tx.rollback();
+	            e.printStackTrace();
+	        } finally {
+	            if(session!=null) session.close();
+	        }
+	}
+	
+	public void updateAvion(Avion a){
+		
+		 Session session = null;
+	     Transaction tx = null;
+		
+	     try {
+	            session = ConnectorHB.getSession();
+	            tx = session.beginTransaction();
+	            session.update(a);
+	            //El objecto art esta enlazado
+	            
+	            tx.commit();
+	            
+	            System.out.println("Update realizado correctamente...");
+	            
+	        } catch (HibernateException e) {
+	            if(tx!=null && tx.isActive()) tx.rollback();
+	            e.printStackTrace();
+	        } finally {
+	            if(session!=null) session.close();
+	        }
+	}
+	
+	public void insertRuta(Ruta r){
+		
+		 Session session = null;
+	     Transaction tx = null;
+		
+	     try {
+	            session = ConnectorHB.getSession();
+	            tx = session.beginTransaction();
+	            session.save(r);
+	            //El objecto art esta enlazado
+	            
+	            tx.commit();
+	            
+	            System.out.println("Insert realizado correctamente...");
+	            
+	        } catch (HibernateException e) {
+	            if(tx!=null && tx.isActive()) tx.rollback();
+	            e.printStackTrace();
+	        } finally {
+	            if(session!=null) session.close();
+	        }
+	}
+	
+	public void updatePiloto(Ruta p){
 		
 		 Session session = null;
 	     Transaction tx = null;

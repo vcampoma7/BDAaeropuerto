@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import org.hibernate.annotations.Parent;
@@ -48,6 +50,8 @@ public class VerPilotos extends JFrame {
 		setContentPane(contentPane);
 		
 		JButton btnNuevoPiloto = new JButton("A\u00F1adir piloto");
+		JButton btnEditarPiloto = new JButton("Editar Piloto");
+		
 		btnNuevoPiloto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				addPilotos addPiloto = new addPilotos(thisframe, true, false, null);
@@ -55,6 +59,7 @@ public class VerPilotos extends JFrame {
 				
 				//al volver cargamos la tabla nuevamente por si han habido cambios
 				
+				btnEditarPiloto.setVisible(false);
 				buscarPilotos();
 			}
 		});
@@ -63,7 +68,8 @@ public class VerPilotos extends JFrame {
 		
 		tbl_pilotos = new JTable();
 		
-		JButton btnEditarPiloto = new JButton("Editar Piloto");
+		btnEditarPiloto.setVisible(false);
+		
 		btnEditarPiloto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 								
@@ -79,6 +85,7 @@ public class VerPilotos extends JFrame {
 				addPilotos addPiloto = new addPilotos(thisframe, true, true, p);
 				addPiloto.setVisible(true);
 				
+				btnEditarPiloto.setVisible(false);
 				buscarPilotos();
 			}
 		});
@@ -114,12 +121,22 @@ public class VerPilotos extends JFrame {
 		thisframe = this;
 		
 		buscarPilotos();
+		
+		tbl_pilotos.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+		    @Override
+		    public void valueChanged(ListSelectionEvent event) {
+		        if (tbl_pilotos.getSelectedRow() > -1) {
+		            // print first column value from selected row
+		            btnEditarPiloto.setVisible(true);
+		        }
+		    }
+		});
 	}
 	
 	private void buscarPilotos(){
 		
 		@SuppressWarnings("unchecked")
-		List <Piloto> pilotos = h.select("SELECT * FROM pilotos").addEntity(Piloto.class).list();
+		List <Piloto> pilotos = h.select("SELECT * FROM piloto").addEntity(Piloto.class).list();
 		
 		rellenarTablaPilotos(pilotos);
 	}

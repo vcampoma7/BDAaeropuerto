@@ -45,7 +45,7 @@ public class VerModelosAvion extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnNuevoModeloAvion = new JButton("A\u00F1adir aeropuerto");
+		JButton btnNuevoModeloAvion = new JButton("A\u00F1adir modelo avión");
 		btnNuevoModeloAvion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				addModeloAvion addModeloAvion = new addModeloAvion(thisframe, true, false, null);
@@ -133,7 +133,7 @@ public class VerModelosAvion extends JFrame {
 		
 		if(modelos!=null){
 			for(ModeloAvion a: modelos)
-				model.addRow(new Object[]{a.getIdModeloAvion(), a.getNombre(), a.getDescripcion(), a.getPeso(), a.getPlazas()});
+				model.addRow(new Object[]{a.getId(), a.getNombre(), a.getDescripcion(), a.getPeso(), a.getPlazas()});
 		}
 	}
 }

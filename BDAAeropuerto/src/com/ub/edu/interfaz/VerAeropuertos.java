@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import org.hibernate.annotations.Parent;
@@ -46,6 +48,8 @@ public class VerAeropuertos extends JFrame {
 		setContentPane(contentPane);
 		
 		JButton btnNuevoAeropuerto = new JButton("A\u00F1adir aeropuerto");
+		JButton btnEditarAeropuerto = new JButton("Editar aeropuerto");
+		
 		btnNuevoAeropuerto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				addAeropuertos addAeropuerto = new addAeropuertos(thisframe, true, false, null);
@@ -53,6 +57,7 @@ public class VerAeropuertos extends JFrame {
 				
 				//al volver cargamos la tabla nuevamente por si han habido cambios
 				
+	            btnEditarAeropuerto.setVisible(false);
 				buscarAeropuertos();
 			}
 		});
@@ -61,7 +66,9 @@ public class VerAeropuertos extends JFrame {
 		
 		tbl_aeropuertos = new JTable();
 		
-		JButton btnEditarAeropuerto = new JButton("Editar aeropuerto");
+
+        btnEditarAeropuerto.setVisible(false);
+		
 		btnEditarAeropuerto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 								
@@ -75,6 +82,7 @@ public class VerAeropuertos extends JFrame {
 				addAeropuertos addAeropuerto = new addAeropuertos(thisframe, true, true, a);
 				addAeropuerto.setVisible(true);
 				
+	            btnEditarAeropuerto.setVisible(false);
 				buscarAeropuertos();
 			}
 		});
@@ -110,6 +118,16 @@ public class VerAeropuertos extends JFrame {
 		thisframe = this;
 		
 		buscarAeropuertos();
+		
+		tbl_aeropuertos.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+		    @Override
+		    public void valueChanged(ListSelectionEvent event) {
+		        if (tbl_aeropuertos.getSelectedRow() > -1) {
+		            // print first column value from selected row
+		            btnEditarAeropuerto.setVisible(true);
+		        }
+		    }
+		});
 	}
 	
 	private void buscarAeropuertos(){

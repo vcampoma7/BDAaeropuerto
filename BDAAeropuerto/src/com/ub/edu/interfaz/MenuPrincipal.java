@@ -69,18 +69,27 @@ public class MenuPrincipal extends JFrame {
 				VerModelosAvion.setVisible(true);
 			}
 		});
+		
+		JButton btnVerRutas = new JButton("Ver rutas");
+		btnVerRutas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VerRutas verRutas = new VerRutas();
+				verRutas.setVisible(true);
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnVerModelosAvin, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnVerAeropuerto)
-							.addGap(26)
-							.addComponent(btnVerPiloto, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(178, Short.MAX_VALUE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(btnVerModelosAvin, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnVerAeropuerto, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(btnVerPiloto, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(btnVerRutas, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(60, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -88,10 +97,11 @@ public class MenuPrincipal extends JFrame {
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnVerAeropuerto)
-						.addComponent(btnVerPiloto))
+						.addComponent(btnVerPiloto)
+						.addComponent(btnVerRutas))
 					.addGap(18)
 					.addComponent(btnVerModelosAvin)
-					.addContainerGap(176, Short.MAX_VALUE))
+					.addContainerGap(177, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}

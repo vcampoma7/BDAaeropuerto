@@ -9,6 +9,7 @@
   <property name="hibernate.connection.username">postgres</property>
   <property name="hibernate.connection.password">postgres</property>
   <property name="hibernate.default_schema">public</property>
+  <!--  <property name="hibernate.hbm2ddl.auto">create</property>-->
   
   <!-- Definimos propiedades de Hibernate para SQL -->
   <property name="show_sql">false</property>
@@ -20,5 +21,7 @@
   <mapping resource="hibernate/Aeropuerto.hbm.xml"/>
   <mapping resource="hibernate/Piloto.hbm.xml"/>
   <mapping resource="hibernate/ModeloAvion.hbm.xml"/>
+  <mapping resource="hibernate/Avion.hbm.xml"/>
+  <mapping resource="hibernate/Ruta.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

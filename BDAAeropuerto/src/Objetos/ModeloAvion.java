@@ -32,11 +32,11 @@ public ModeloAvion(Integer id, String nombre,
 	this.plazas = plazas;
 }
 
-public Integer getIdModeloAvion() {
+public Integer getId() {
 	return this.id;
 }
 
-public void setIdModeloAvion(Integer id) {
+public void setId(Integer id) {
 	this.id = id;
 }
 
