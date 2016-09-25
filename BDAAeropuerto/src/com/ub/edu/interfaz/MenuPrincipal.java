@@ -61,14 +61,25 @@ public class MenuPrincipal extends JFrame {
 				verPilotos.setVisible(true);
 			}
 		});
+		
+		JButton btnVerModelosAvin = new JButton("Ver modelos avi\u00F3n");
+		btnVerModelosAvin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VerModelosAvion VerModelosAvion = new VerModelosAvion();
+				VerModelosAvion.setVisible(true);
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnVerAeropuerto)
-					.addGap(26)
-					.addComponent(btnVerPiloto, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnVerModelosAvin, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(btnVerAeropuerto)
+							.addGap(26)
+							.addComponent(btnVerPiloto, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(178, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
@@ -78,7 +89,9 @@ public class MenuPrincipal extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnVerAeropuerto)
 						.addComponent(btnVerPiloto))
-					.addContainerGap(217, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(btnVerModelosAvin)
+					.addContainerGap(176, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}

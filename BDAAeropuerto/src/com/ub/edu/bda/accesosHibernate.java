@@ -11,6 +11,7 @@ import org.hibernate.type.StringType;
 
 import Objetos.Aeropuerto;
 import Objetos.Piloto;
+import Objetos.ModeloAvion;
 
 public class accesosHibernate {
 
@@ -74,6 +75,52 @@ public class accesosHibernate {
 	            tx.commit();
 	            
 	            System.out.println("Insert realizado correctamente...");
+	            
+	        } catch (HibernateException e) {
+	            if(tx!=null && tx.isActive()) tx.rollback();
+	            e.printStackTrace();
+	        } finally {
+	            if(session!=null) session.close();
+	        }
+	}
+	
+	public void insertModeloAvion(ModeloAvion a){
+		
+		 Session session = null;
+	     Transaction tx = null;
+		
+	     try {
+	            session = ConnectorHB.getSession();
+	            tx = session.beginTransaction();
+	            session.save(a);
+	            //El objecto art esta enlazado
+	            
+	            tx.commit();
+	            
+	            System.out.println("Insert realizado correctamente...");
+	            
+	        } catch (HibernateException e) {
+	            if(tx!=null && tx.isActive()) tx.rollback();
+	            e.printStackTrace();
+	        } finally {
+	            if(session!=null) session.close();
+	        }
+	}
+	
+	public void updateModeloAvion(ModeloAvion a){
+		
+		 Session session = null;
+	     Transaction tx = null;
+		
+	     try {
+	            session = ConnectorHB.getSession();
+	            tx = session.beginTransaction();
+	            session.update(a);
+	            //El objecto art esta enlazado
+	            
+	            tx.commit();
+	            
+	            System.out.println("Update realizado correctamente...");
 	            
 	        } catch (HibernateException e) {
 	            if(tx!=null && tx.isActive()) tx.rollback();
