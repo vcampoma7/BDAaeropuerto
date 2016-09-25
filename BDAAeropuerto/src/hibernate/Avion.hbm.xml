@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Objetos.Avion" table="avion">
+        <id name="id" column="ID">
+            <generator class="identity" />
+        </id>
+        <property name="matricula" column="MATRICULA" />
+        <many-to-one name="modelo" class="Objetos.ModeloAvion" fetch="select">
+           <column name="ID_MODELO" /> 
+        </many-to-one>
+    </class>
+</hibernate-mapping>
