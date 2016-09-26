@@ -1,6 +1,5 @@
 package com.ub.edu.interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -9,16 +8,12 @@ import javax.swing.border.EmptyBorder;
 
 import com.ub.edu.bda.accesosHibernate;
 
-import Objetos.Aeropuerto;
 import Objetos.Usuario;
 
 import javax.swing.JButton;
-import java.awt.GridLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
-import javax.swing.Action;
 import java.awt.event.ActionListener;
 import java.util.List;
 
@@ -33,7 +28,6 @@ import java.awt.Font;
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private final Action action = new SwingAction();
 	private JTextField txtUsuario;
 	private JPasswordField jpassClave;
 	accesosHibernate h = new accesosHibernate();
@@ -151,15 +145,5 @@ public class Login extends JFrame {
 	            + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
 	            JOptionPane.ERROR_MESSAGE);
 	    }
-	}
-
-	
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(NAME, "SwingAction");
-			putValue(SHORT_DESCRIPTION, "Some short description");
-		}
-		public void actionPerformed(ActionEvent e) {
-		}
 	}
 }
