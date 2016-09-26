@@ -23,5 +23,6 @@
   <mapping resource="hibernate/ModeloAvion.hbm.xml"/>
   <mapping resource="hibernate/Avion.hbm.xml"/>
   <mapping resource="hibernate/Ruta.hbm.xml"/>
+  <mapping resource="hibernate/Usuario.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>
