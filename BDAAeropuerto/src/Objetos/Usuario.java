@@ -24,4 +24,12 @@ public Usuario(Integer id, String username,	String password) {
 	this.password = password;
 }
 
+public Integer getId() {
+	return this.id;
+}
+
+public void setId(Integer id) {
+	this.id = id;
+}
+
 }
