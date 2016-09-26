@@ -73,7 +73,7 @@ public class VerAviones extends JFrame {
 			     }
 			    
 			    @SuppressWarnings("unchecked")
-				List <ModeloAvion> modelo = h.select("select * FROM modeloAvion where id = " + result.get(3).toString()).addEntity(ModeloAvion.class).list();
+				List <ModeloAvion> modelo = h.select("select * FROM modeloAvion where id = " + result.get(2).toString()).addEntity(ModeloAvion.class).list();
 			    
 			    Avion a = new Avion(Integer.valueOf(result.get(0)), result.get(1).toString(), modelo.get(0));
 				addAviones addAvion = new addAviones(thisframe, true, true, a);

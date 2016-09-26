@@ -14,6 +14,7 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.event.ActionListener;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MenuPrincipal extends JFrame {
 
@@ -77,6 +78,14 @@ public class MenuPrincipal extends JFrame {
 				verRutas.setVisible(true);
 			}
 		});
+		
+		JButton btnVerAviones = new JButton("Ver aviones");
+		btnVerAviones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VerAviones verAviones = new VerAviones();
+				verAviones.setVisible(true);
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -86,9 +95,12 @@ public class MenuPrincipal extends JFrame {
 						.addComponent(btnVerModelosAvin, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnVerAeropuerto, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGap(18)
-					.addComponent(btnVerPiloto, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(btnVerRutas, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(btnVerPiloto, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(btnVerRutas, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnVerAviones, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(60, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
@@ -100,8 +112,10 @@ public class MenuPrincipal extends JFrame {
 						.addComponent(btnVerPiloto)
 						.addComponent(btnVerRutas))
 					.addGap(18)
-					.addComponent(btnVerModelosAvin)
-					.addContainerGap(177, Short.MAX_VALUE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnVerModelosAvin)
+						.addComponent(btnVerAviones))
+					.addContainerGap(176, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
