@@ -132,7 +132,7 @@ public class Login extends JFrame {
 		
 		accesosHibernate h = new accesosHibernate();
 		@SuppressWarnings("unchecked")
-		List <Usuario> user = h.select("select * FROM usuario where username = " + usuario + " and password = " + clavedef).addEntity(Aeropuerto.class).list();
+		List <Usuario> user = h.select("select * FROM usuario where username = " + usuario + " and password = " + clavedef).addEntity(Usuario.class).list();
 	    
 		
 		if (!user.isEmpty()){
