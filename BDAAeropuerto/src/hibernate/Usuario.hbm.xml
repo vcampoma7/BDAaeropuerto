@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="Objetos.Piloto" table="USUARIO">
+    <class name="Objetos.Usuario" table="USUARIO">
         <id name="id" column="ID">
             <generator class="identity" />
         </id>
